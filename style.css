@@ -1,0 +1,14 @@
+h1 {
+    color: white;
+    text-align: center;
+
+}
+.header {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border: 1px solid lightblue;
+
+}
+#city-form {
+    margin-top: 100px
+}
