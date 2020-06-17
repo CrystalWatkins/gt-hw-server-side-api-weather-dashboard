@@ -13,7 +13,6 @@ $("#add-city").on("click", function(event) {
     
     // renderListItems();
     
-    // for (var i = 0; i < cityName.length; i++) {
         var a = $("<li>", {
             class: "list-group-item",
             click: function(){
@@ -27,7 +26,6 @@ $("#add-city").on("click", function(event) {
         a.attr("data-name", city);
         a.text(city)
         $("#cityList").prepend(a);
-    
 });
 
 
