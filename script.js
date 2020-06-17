@@ -1,3 +1,5 @@
+$(document).ready(function() { 
+
 var cityName =  []; 
 
 
@@ -16,7 +18,7 @@ $("#add-city").on("click", function(event) {
             class: "list-group-item",
             click: function(){
                 //when you console.log it shows when it's clicked, which city is being clicked
-                console.log($(this));
+                // console.log($(this));
                 //this passes this element in this argument
                 displayWeatherInfo(event, this);
             }
@@ -30,7 +32,7 @@ $("#add-city").on("click", function(event) {
 
 
 function displayWeatherInfo(event, element) {
-    console.log(event, element)
+    // console.log(event, element)
     var APIKey = "889cd95742cb4d318b134906ce82bcb0";
     var city = $(element).text();
 
@@ -40,34 +42,43 @@ function displayWeatherInfo(event, element) {
         method: "GET"
       }).then(function(response) {
 
-        console.log(response);
-        $("<h2 id='city'>").text("City:" + response.name);
-        // $("<p id='icon'>").attr("icon: " + response.weather[0].icon)
-        $("<p>").text("temp" + response.main.temp);
-        $("<p>").text(" Wind" + response.wind);
-        $("<p>").text("Humidity" +response.main.humidity);
-        $("<p>").text("Longitude" + response.coord.lon);
-        $("<p>").text("Latitude" +response.coord.lat);
-        // var lastCitySearched =$(".lastCitySearched");
-        // lastCitySearched.append(city);
-        // lastCitySearched.append(icon);
-        // lastCitySearched.append(temp);
-        // lastCitySearched.append(wind);
-        // lastCitySearched.append(humidity);
-        // lastCitySearched.append(longitude);
-        // lastCitySearched.append(latitude);
+        // console.log(response);
 
-      })
-    }
+        $(".currentCityName").append(response.name);
+        $("#temp").append("Temperature: " + response.main.temp);
+        $("#windSpeed").append("Wind Speed: " + response.wind.speed + " mph");
+        $("#humidity").append("Humidity: " +response.main.humidity);
 
-    // var lon =
-    // var lat = 
-    // var queryURL2 = "http://api.openweathermap.org/data/2.5/uvi?appid=" + API key + "&lat=" + lat "&lon=" + lon;
-    // $.ajax({
-    //     url: queryURL2,
-    //     method: "GET"
-    //   }).then(function(response) {
-    //     console.log(response);
+        var iconEl = response.weather[0].icon;
+        var cityIconUrl = "http://openweathermap.org/img/w/" + iconEl + ".png";
+        
+        $("#cityIconUrl").attr("src", cityIconUrl);
 
-    //   })
+        var lon =response.coord.lon;
+        var lat = response.coord.lat;
 
+        
+        var queryURL2 = "http://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + lat + "&lon=" + lon;
+        $.ajax({
+          url: queryURL2,
+          method: "GET"
+        }).then(function(response2) {
+        $("#uvIndex").append("UV Index: " + response2.value); 
+
+          var index = parseInt(parseFloat(response2.value));
+          console.log(index);
+
+        if (index < 3) {
+        $(uvIndex).addClass("favorable")
+        } else if (index > 7) {
+          $(uvIndex).addClass("severe")
+        } else {
+          $(uvIndex).addClass("moderate")
+        }
+
+
+    });
+
+  })
+  }
+})
