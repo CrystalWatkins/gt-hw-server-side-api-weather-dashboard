@@ -1,23 +1,23 @@
 $(document).ready(function() { 
 
   if(localStorage.getItem("searchedCityList")) {
-    var cityArray = JSON.parse(localStorage.getItem("searchedCityList"));
+    let cityArray = JSON.parse(localStorage.getItem("searchedCityList"));
     for (var i = 0; i < cityArray.length; i++) {
       var a = $("<li>", {
         class: "list-group-item",
         click: function()
-        {displayWeatherInfo(event, this);
-        }
+        {displayWeatherInfo(event, this);}
     })
     a.addClass("city");
     a.attr("data-name", cityArray[i]);
-    a.text(cityArray[i])
+    a.text(cityArray[i]);
     $("#cityList").prepend(a);
     }
   } 
 
 $("#add-city").on("click", function(event) {
     event.preventDefault();
+
     var city= $("#city-input").val().trim();
     if (!localStorage.searchedCityList){
       let cityList = []
@@ -42,17 +42,13 @@ $("#add-city").on("click", function(event) {
         a.attr("data-name", city);
         a.text(city)
         $("#cityList").prepend(a);
-});
-
-// function clearDashboard(event) {
-//   if (weather is displayed)
-// }
-// if $("#jumbo").empty();
-// $("#day1").empty();
-
+      });
 
 
 function displayWeatherInfo(event, element) {
+  clearJumbotron();
+  clearCards(1,2,3,4,5);
+
    console.log(event);
     // console.log(event, element)
     var APIKey = "889cd95742cb4d318b134906ce82bcb0";
@@ -149,4 +145,32 @@ function displayWeatherInfo(event, element) {
   })
   });
   }
+
+function clearJumbotron() {
+  console.log("clear jumbo")
+  var img = "<img id='cityIconUrl'>";
+  var span = "<span id='uvIndex' class='badge badge-secondary'></span>"
+
+  $(".currentCityName").text("").html(img);
+  $(".cityIconUrl").attr("src", "");
+  $("#temp").text("");
+  $("#humidity").text("");
+  $("#windSpeed").text("");
+  $("#uvIndex").text("");
+  $("#cityIndex").text("").html(span);
+}
+
+function clearCards(...cards) {
+  console.log(cards);
+  for (var i=0; i < cards.length; i++) {
+    console.log(i);
+    $("#date" + (i + 1)).text("");
+    $("#temp" + (i + 1)).text("");
+    $("#humidity" + (i + 1)).text("");
+    $("#icon" + (i + 1)).attr("src", "")
+  }
+}
+
+
 })
+
