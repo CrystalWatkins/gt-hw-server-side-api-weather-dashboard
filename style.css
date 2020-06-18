@@ -1,0 +1,34 @@
+h1 {
+    color: white;
+    text-align: center;
+
+}
+.header {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border: 1px solid lightblue;
+
+}
+#city-form {
+    margin-top: 100px;
+}
+.currentCity {
+    margin-top: 100px;
+}
+.severe {
+    background-color: red;
+}
+.moderate {
+    background-color: yellow;
+}
+.favorable {
+    background-color: green;
+}
+.jumbotron {
+    width: 100%;
+    height: 75%
+}
+.card {
+    background-color:blue;
+    color: white;
+}
