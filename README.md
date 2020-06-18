@@ -2,7 +2,10 @@
 
 ## Description 
 
-This is a homework requirement for GT Full Stack Flex Program. ****
+This is a homework requirement for GT Full Stack Flex Program. It is taking a third 
+party web API app and using it to display the cities the user searches, the UV index 
+(and colors it according to severe, moderate, and mild indexes), and then gives you
+a 5 day forecast of the weather for the week!
 
 
 ## Table of Contents
@@ -21,21 +24,20 @@ This is a homework requirement for GT Full Stack Flex Program. ****
 1. Clone the repo
 2. Open the index.html file
 
-[Link to Code](#)
+[Link to Code](https://crystalwatkins.github.io/gt-hw-server-side-api-weather-dashboard/)
  
-[Website link for My Portfolio Page](#)
+[Website link for My Portfolio Page](https://github.com/CrystalWatkins/gt-hw-server-side-api-weather-dashboard)
 
 
 ## Usage 
 
-This _webpage uses _______ to be___.
+This webpage uses the third party APIs to display weather in the city that you search for.
 
-[Link to Code](#).
+[Link to Code](https://crystalwatkins.github.io/gt-hw-server-side-api-weather-dashboard/).
  
-[Website link for My Portfolio Page](#).
+[Website link for My Portfolio Page](https://github.com/CrystalWatkins/gt-hw-server-side-api-weather-dashboard).
 
-![Web Page 1](startPage.png)
-![Web Page 2](startQuizPage.png)
+![Web Page 1](webpage1.png)
 
 ## Credits
 
