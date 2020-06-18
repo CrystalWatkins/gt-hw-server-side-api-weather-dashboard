@@ -65,7 +65,7 @@ function displayWeatherInfo(event, element) {
     var APIKey = "889cd95742cb4d318b134906ce82bcb0";
     var city = $(element).text();
     // this is using out API key to get the weather for the current city to display
-    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIKey;
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIKey;
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -84,14 +84,14 @@ function displayWeatherInfo(event, element) {
         // when you console.log, it only sends back a string, which is not the pretty
         // image the user wants displayed!
         var iconEl = response.weather[0].icon;
-        var cityIconUrl = "http://openweathermap.org/img/w/" + iconEl + ".png";
+        var cityIconUrl = "https://openweathermap.org/img/w/" + iconEl + ".png";
         $("#cityIconUrl").attr("src", cityIconUrl);
         // by creating variables for the longitude and latiutde, I'm able to get my
         // UV index in lines 93
         var lon =response.coord.lon;
         var lat = response.coord.lat;
         // this calls the second URL function that gets us the UV index
-        var queryURL2 = "http://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + lat + "&lon=" + lon;
+        var queryURL2 = "https://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + lat + "&lon=" + lon;
         $.ajax({
           url: queryURL2,
           method: "GET"
@@ -114,7 +114,7 @@ function displayWeatherInfo(event, element) {
         }
     });
     // this third URL is getting our data for the 5 day forecast
-   var queryURL3= "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + APIKey;
+   var queryURL3= "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + APIKey;
    $.ajax({
     url: queryURL3,
     method: "GET"
@@ -130,7 +130,7 @@ function displayWeatherInfo(event, element) {
     $("#humidity1").append("Humidity: " + response3.list[0].main.humidity+ "%");
 
     var icon1El = response3.list[0].weather[0].icon;
-    var icon1Url = "http://openweathermap.org/img/w/" + icon1El + ".png";
+    var icon1Url = "https://openweathermap.org/img/w/" + icon1El + ".png";
     $("#icon1").attr("src", icon1Url);
 
 
@@ -139,7 +139,7 @@ function displayWeatherInfo(event, element) {
     $("#humidity2").append("Humidity: " + response3.list[8].main.humidity+ "%");
 
     var icon2El = response3.list[8].weather[0].icon;
-    var icon2Url = "http://openweathermap.org/img/w/" + icon2El + ".png";
+    var icon2Url = "https://openweathermap.org/img/w/" + icon2El + ".png";
     $("#icon2").attr("src", icon2Url);
 
     $("#date3").append(response3.list[16].dt_txt.split(" ")[0]);
@@ -147,7 +147,7 @@ function displayWeatherInfo(event, element) {
     $("#humidity3").append("Humidity: " + response3.list[16].main.humidity+ "%");
 
     var icon3El = response3.list[16].weather[0].icon;
-    var icon3Url = "http://openweathermap.org/img/w/" + icon3El + ".png";
+    var icon3Url = "https://openweathermap.org/img/w/" + icon3El + ".png";
     $("#icon3").attr("src", icon3Url);
 
     $("#date4").append(response3.list[24].dt_txt.split(" ")[0]);
@@ -155,7 +155,7 @@ function displayWeatherInfo(event, element) {
     $("#humidity4").append("Humidity: " + response3.list[24].main.humidity+ "%");
 
     var icon4El = response3.list[24].weather[0].icon;
-    var icon4Url = "http://openweathermap.org/img/w/" + icon4El + ".png";
+    var icon4Url = "https://openweathermap.org/img/w/" + icon4El + ".png";
     $("#icon4").attr("src", icon4Url);
 
     $("#date5").append(response3.list[32].dt_txt.split(" ")[0]);
@@ -163,7 +163,7 @@ function displayWeatherInfo(event, element) {
     $("#humidity5").append("Humidity: " + response3.list[32].main.humidity+ "%");
 
     var icon5El = response3.list[32].weather[0].icon;
-    var icon5Url = "http://openweathermap.org/img/w/" + icon5El + ".png";
+    var icon5Url = "https://openweathermap.org/img/w/" + icon5El + ".png";
     $("#icon5").attr("src", icon5Url);
   })
   });
